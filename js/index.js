@@ -32,6 +32,14 @@ for (let i = 0; i < divs.length; i++) {
   divs[i].addEventListener('click', bubble);
 }
 
+function capture(e) {
+  console.log(this.firstChild.nodeValue.trip() + ' captured')
+}
+
+for (let i = 0; i < divs.length; i++) {
+  divs[i].addEventListener('click', capture, true);
+}
+
 function bubble(e) {
   e.stopPropagation()
   console.log(this.firstChild.nodeValue.trim() + ' bubbled');
@@ -39,12 +47,4 @@ function bubble(e) {
 
 for (let i = 0; i < divs.length; i++) {
   divs[i].addEventListener('click', bubble)
-}
-
-function capture(e) {
-  console.log(this.firstChild.nodeValue.trip() + ' captured')
-}
-
-for (let i = 0; i < divs.length; i++) {
-  divs[i].addEventListener('click', capture, true);
 }
