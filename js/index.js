@@ -10,6 +10,10 @@ main.addEventListener('click', function(event) {
 const input = document.querySelector('input')
 
 input.addEventListener('keydown', function(e) {
+  console.log(e.which)
+})
+
+input.addEventListener('keydown', function(e) {
   if (e.which === 71) {
     console.log('default prevented');
     return e.preventDefault()
@@ -21,12 +25,11 @@ input.addEventListener('keydown', function(e) {
 let divs = document.querySelectorAll('div')
 
 function bubble(e) {
-  e.stopPropagation()
   console.log(this.firstChild.nodeValue.trim() + ' bubbled');
 }
 
 for (let i = 0; i < divs.length; i++) {
-  divs[i].addEventListener('click', bubble)
+  divs[i].addEventListener('click', bubble);
 }
 
 function capture(e) {
@@ -35,4 +38,13 @@ function capture(e) {
 
 for (let i = 0; i < divs.length; i++) {
   divs[i].addEventListener('click', capture, true);
+}
+
+function bubble(e) {
+  e.stopPropagation()
+  console.log(this.firstChild.nodeValue.trim() + ' bubbled');
+}
+
+for (let i = 0; i < divs.length; i++) {
+  divs[i].addEventListener('click', bubble)
 }
